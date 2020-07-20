@@ -1,0 +1,101 @@
+
+
+*{
+    margin:0px;
+    padding: 0px;
+    
+}
+nav{
+    background-color: #23395B;
+    font-family: 'Julius Sans One', sans-serif;
+}
+.navbar-brand{
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    float: left;
+    font-size:20px;
+}
+
+ul li a{
+    list-style: none;
+    margin-left: 25px;
+    color: white;
+    font-weight: 500;
+}
+body{
+    height: 100%;
+    
+}
+.content{
+    position: fixed;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    
+    font-size: 18px;
+}
+.content h1 {
+    letter-spacing: 0.2em;
+    text-decoration: underline;
+}
+.bg-img{
+    background-image: url("../../assets/Images/Corona1.jpg");
+    background-color: rgba(0,0,0,0.7);
+    background-blend-mode: darken;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:700px;
+    position: relative;
+    margin-top: unset;
+}
+
+
+.col-sm-4{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.thumbnail{
+    padding: 10px;
+    border-radius: 10px;
+    height: 300px;
+    border: none;
+    -webkit-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+    -moz-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+     box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+}
+.thumbnail img{
+  transform: translateY(-60%);
+}
+
+.con{
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #d4e9fa;
+}
+.page-footer{
+    font-family: 'Quicksand', sans-serif;
+    padding-top: 15px;
+    font-size: 16px;
+    color: white;
+    list-style: none;
+    background-color:#2b466e ;
+}
+li{
+    list-style: none;
+}
+.footer-copyright {
+    margin-top: 10px
+    ;
+    padding: 10px;
+    background-color:#23395B ;
+    color: white;
+}
