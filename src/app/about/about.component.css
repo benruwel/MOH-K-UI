@@ -1,0 +1,16 @@
+*{
+    margin: 10px;
+    padding: 5px;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+div{
+    font-size: 16px;
+}
+.con{  
+    background-color: #d4e9fa;
+    border-radius: 5px;
+}
+h1{
+    text-decoration: dotted;
+}
