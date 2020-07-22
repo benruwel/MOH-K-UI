@@ -1,0 +1,79 @@
+.form{
+    position: fixed;
+    align-content: center;
+    margin: 20px;
+    width: 800px;
+    padding: 16px;
+    background-color: white;
+    margin-top: 150px;
+    font-family: 'Quicksand', sans-serif;
+    -webkit-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+    -moz-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+     box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+
+  }
+  col-sm-5{
+      width: 100%;
+  }
+  .contact{
+      background-color:#2b466e;
+      font-family: 'Quicksand', sans-serif;
+      width: 100%;
+      padding: 20px;
+      margin-top: 80px;
+      border-radius: 5px;
+      position: absolute;
+      align-content: center;
+      max-width: 500px;
+      transform: translateX(30%);
+      height: 500px;
+      -webkit-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+    -moz-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+     box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+     display: table-column;
+  }
+  
+  /* Full-width input fields */
+    input[type=text], textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  i{
+      padding: 10px;
+      color: white;
+      font-size: 20px;
+  }
+  /* Set a style for the submit button */
+  .btn {
+    background-color:#2b466e;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+    color: white;
+  }
+  li{
+      list-style: none;
+      color: white;
+      padding: 10px;
+      display: table;
+  }
+  .i{
+      display:table;
+      margin-left: 50px;
+      
+  }
