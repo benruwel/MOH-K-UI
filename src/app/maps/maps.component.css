@@ -1,11 +1,35 @@
-.map{
-    margin-top: 100px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 16px;
+ .covid-table{
+     margin-top: 50px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    }
+    
+hr{
+    color: #000000;
 }
+    
+table{
+    text-align: center;
+    color: #1D3557;
+    border-radius: 5px;
+ }
 
-iframe{
-    margin-top: 20px;
-    margin-bottom: 100px;
-    width: 100%;
+ td {
+     background-color: #a8dadc7a;
+    border-bottom: 1px solid white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    padding: 5px;
+  }
+
+th{
+    background-color: #a8dadc;
+    color: black;
+    border-bottom: 2px solid #E63946;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 16px;
 }

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MOH"
+    }
+  },
+  "defaultProject": "MOH",
+  "cli": {
+    "analytics": false
+  }
 }

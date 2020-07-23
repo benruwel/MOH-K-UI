@@ -1,7 +1,57 @@
-<div class=" container ">
+
+
+
+<div class="container">
    <!--PLACE HOLDER FOR MAP-->
-<div class="map">
-    <p class="text-danger"><strong> Number of Confirmed cases: 13,353 </strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d127643.07734918816!2d36.8836608!3d-1.2648448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1595254280421!5m2!1sen!2ske" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+   <p class="text-danger"><strong> Number of Confirmed cases: 13,353 </strong></p>
+   <div class="map-content">
+       <google-map
+       height="500px"
+       width="100%"
+       [zoom]="zoom"
+       [center]="center"
+       [options]="options"
+       >
+       <map-marker
+       *ngFor="let marker of markers"
+       [position]="marker.position"
+       [label]="marker.label"
+       [title]="marker.title"
+       [options]="marker.options"
+       (click)="openInfo(marker.elem, marker.info)"
+     >
+     </map-marker>
+
+     <map-info-window>{{ infoContent }}</map-info-window>
+
+    </google-map>
+   </div>
 </div>
+
+
+<div class="container covid-table">
+  <hr>
+   <table *ngIf="county$" style="width:80%">
+      <tr>
+        <th>County</th>
+        <th>Population</th>
+        <th>Total Cases</th>
+        <th>Death Cases</th>
+        <th>Recovered Cases</th>
+        <th>Active Cases</th>
+      </tr>
+      <tr *ngFor="let county of county$">
+        <td>{{ county.countyName }}</td>
+        <td>{{ county.countyPopulation }}</td>
+        <td>{{ county.totalCases }}</td>
+        <td>{{ county.deathCases }}</td>
+        <td>{{ county.recoveredCases }}</td>
+        <td>{{ county.activeCases }}</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+      </tr>
+    </table>
 </div>
