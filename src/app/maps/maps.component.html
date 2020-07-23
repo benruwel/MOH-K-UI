@@ -1,36 +1,20 @@
 
 
 
-<div class="container">
+<div class="container map-content">
+
+  <p class="text">Status per county as of 23rd June, 2020</p>
+
    <!--PLACE HOLDER FOR MAP-->
-   <p class="text-danger"><strong> Number of Confirmed cases: 13,353 </strong></p>
-   <div class="map-content">
-       <google-map
-       height="500px"
-       width="100%"
-       [zoom]="zoom"
-       [center]="center"
-       [options]="options"
-       >
-       <map-marker
-       *ngFor="let marker of markers"
-       [position]="marker.position"
-       [label]="marker.label"
-       [title]="marker.title"
-       [options]="marker.options"
-       (click)="openInfo(marker.elem, marker.info)"
-     >
-     </map-marker>
+   <div id="map" ></div>
+<p class="text text-danger">Map of Covid-19 spread</p>
 
-     <map-info-window>{{ infoContent }}</map-info-window>
+<hr>
 
-    </google-map>
-   </div>
 </div>
 
 
 <div class="container covid-table">
-  <hr>
    <table *ngIf="county$" style="width:80%">
       <tr>
         <th>County</th>
@@ -40,18 +24,18 @@
         <th>Recovered Cases</th>
         <th>Active Cases</th>
       </tr>
-      <tr *ngFor="let county of county$">
-        <td>{{ county.countyName }}</td>
-        <td>{{ county.countyPopulation }}</td>
-        <td>{{ county.totalCases }}</td>
-        <td>{{ county.deathCases }}</td>
-        <td>{{ county.recoveredCases }}</td>
-        <td>{{ county.activeCases }}</td>
-      </tr>
+      <ng-template ngFor let-county [ngForOf]="county$" let-i="index">
+        <tr *ngIf="i<15">
+          <td>{{ county.countyName }}</td>
+          <td>{{ county.countyPopulation }}</td>
+          <td>{{ county.totalCases }}</td>
+          <td>{{ county.deathCases }}</td>
+          <td>{{ county.recoveredCases }}</td>
+          <td>{{ county.activeCases }}</td>
+        </tr>
+      </ng-template>
       <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
+        <td class="footer" colspan="6"><p class="text text-danger"> Number of Confirmed cases: 13,353 </p></td>
       </tr>
     </table>
 </div>

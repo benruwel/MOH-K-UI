@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { Component, OnInit } from '@angular/core';
+
+import {} from 'googlemaps';
+import{} from 'deck.gl';
 
 import { APIRequestService } from "../services/apirequest.service";
 import { CountyModel } from "../county-model/county.model";
@@ -13,85 +15,77 @@ import { CountyModel } from "../county-model/county.model";
 })
 
 export class MapsComponent implements OnInit {
-  @Input() marker : MapMarker;
-
+  
   county$ : CountyModel[];
   
-  markers = []
-
+  map: google.maps.Map;
+  deck : deck.gl
   
-
-  @ViewChild(GoogleMap, { static: false }) map: GoogleMap
-  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
-
-  zoom = 7
-  width = 500;
-  center: google.maps.LatLngLiteral
-  options: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
-    zoomControl: true,
-    mapTypeControl: true,
-    scaleControl: true,
-    streetViewControl: true,
-  }
-
   constructor( private apiRequest : APIRequestService ) { }
 
   
-  
   ngOnInit(): void {
     
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    });
-    this.addMarker();
-
+    this.initMap();
+    
     this.countyData();
     
   }
   
+  initMap(): void {
+   this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+     center: { lat: 0.1768696, lng: 37.9083264 },
+     zoom: 6
+   });
+
+   this.map.data.setStyle(feature => {
+     return {
+       title: feature.getProperty("name"),
+       optimized: false
+     };
+   });
+
+   const deckOverlay = new deck.GoogleMapsOverlay({
+    layers: [
+      // @ts-ignore TODO(jpoehnelt)
+      new deck.GeoJsonLayer({
+        id: "earthquakes",
+        data:
+          "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson",
+        filled: true,
+        pointRadiusMinPixels: 2,
+        pointRadiusMaxPixels: 200,
+        opacity: 0.4,
+        pointRadiusScale: 0.3,
+        getRadius: (f: any) => Math.pow(10, f.properties.mag),
+        getFillColor: [255, 70, 30, 180],
+        autoHighlight: true,
+        transitions: {
+          getRadius: {
+            type: "spring",
+            stiffness: 0.1,
+            damping: 0.15,
+            enter: _ => [0], // grow from size 0,
+            duration: 10000
+          }
+        },
+        onDataLoad: _ => {
+          // @ts-ignore defined in include
+          progress.done(); // hides progress bar
+        }
+      })
+    ]
+  });
+
+  deckOverlay.setMap(this.map);
+
+   
+ }
   countyData() {
     this.apiRequest.getCountyData()
       .subscribe((data : any) => {
         this.county$ = data;
       })
-  }
-  infoContent = ''
-  zoomIn() {
-    this.zoom++
-  }
-
-  zoomOut() {
-    this.zoom--
-  }
-
-  addMarker() {
-    this.markers.push({
-      position: {
-        lat: -1,
-        lng: 36,
-      },
-      label: {
-        color: 'red',
-        text: 'Nairobi',
-      },
-      title: 'Number of cases',
-      info: 'Marker info ' + (this.markers.length + 1),
-      options: { animation: google.maps.Animation.BOUNCE },
-    })
-  }
-
-  click(event: google.maps.MouseEvent) {
-    console.log(event);
-  }
-  
-
-  openInfo(marker: MapMarker, content) {
-    this.infoContent = content
-    this.info.open(marker)
   }
 
 }

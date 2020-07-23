@@ -68,9 +68,9 @@ body{
     border-radius: 10px;
     height: 300px;
     border: none;
-    -webkit-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+    -webkit-box-shadow: 16px 11px 17px -1px rgba(77, 76, 77, 0.712);
     -moz-box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
-     box-shadow: 16px 11px 17px -1px rgba(77,76,77,0.83);
+     box-shadow: 16px 11px 17px -1px rgba(77, 76, 77, 0.37);
 }
 .thumbnail img{
   transform: translateY(-60%);
